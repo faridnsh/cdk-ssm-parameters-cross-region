@@ -10,6 +10,8 @@
 
 # CDK SSM Parameters cross-region
 
+*Forked from [pepperize/cdk-ssm-parameters-cross-region](https://github.com/pepperize/cdk-ssm-parameters-cross-region) with added `fromStringParameterArn` method support.*
+
 Store, read and lookup AWS SSM Parameters cross-region
 
 > Currently, only supports StringParameter except simple name. Implements `aws_ssm.IParameter` and can be used as `aws_ssm.StringParameter` replacement.
@@ -19,13 +21,13 @@ Store, read and lookup AWS SSM Parameters cross-region
 ### TypeScript
 
 ```shell
-npm install @pepperize/cdk-ssm-parameters-cross-region
+npm install @faridnsh/cdk-ssm-parameters-cross-region
 ```
 
 or
 
 ```shell
-yarn add @pepperize/cdk-ssm-parameters-cross-region
+yarn add @faridnsh/cdk-ssm-parameters-cross-region
 ```
 
 ### Python

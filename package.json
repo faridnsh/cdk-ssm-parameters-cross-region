@@ -1,9 +1,9 @@
 {
-  "name": "@pepperize/cdk-ssm-parameters-cross-region",
+  "name": "@faridnsh/cdk-ssm-parameters-cross-region",
   "description": "Store, read and lookup AWS SSM Parameters cross-region",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pepperize/cdk-ssm-parameters-cross-region.git"
+    "url": "https://github.com/faridnsh/cdk-ssm-parameters-cross-region.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -18,10 +18,7 @@
     "format": "npx projen format",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:dotnet": "npx projen package:dotnet",
-    "package:java": "npx projen package:java",
     "package:js": "npx projen package:js",
-    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "pre-compile": "npx projen pre-compile",
     "release": "npx projen release",
@@ -32,8 +29,8 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Patrick Florek",
-    "email": "patrick.florek@gmail.com",
+    "name": "Farid Nouri Neshat",
+    "email": "faridnsh@gmail.com",
     "organization": true
   },
   "devDependencies": {
@@ -130,23 +127,7 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {
-      "java": {
-        "package": "com.pepperize.cdk.ssm_parameters_cross_region",
-        "maven": {
-          "groupId": "com.pepperize",
-          "artifactId": "cdk-ssm-parameters-cross-region"
-        }
-      },
-      "python": {
-        "distName": "pepperize.cdk-ssm-parameters-cross-region",
-        "module": "pepperize_cdk_ssm_parameters_cross_region"
-      },
-      "dotnet": {
-        "namespace": "Pepperize.CDK",
-        "packageId": "Pepperize.CDK.SsmParametersCrossRegion"
-      }
-    },
+    "targets": {},
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
