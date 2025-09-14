@@ -49,7 +49,7 @@ export interface StringParameterProps extends ParameterOptions {
 }
 
 // Make parameterName optional for the attributes interface
-export interface StringParameterAttributes extends Omit<ssm.StringParameterAttributes, "parameterName"> {
+export interface StringParameterAttributes {
   /**
    * The region to retrieve the parameter from. See AWS.SSM.region for more information.
    */
@@ -68,6 +68,33 @@ export interface StringParameterAttributes extends Omit<ssm.StringParameterAttri
    * and includes "/" it must also be prefixed with a "/" (fully-qualified).
    */
   readonly parameterName?: string;
+
+  /**
+   * Indicates of the parameter name is a simple name (i.e. does not include "/" separators).
+   *
+   * This is only required only if `parameterName` is a token, which means we
+   * are unable to detect if the name is simple or "path-like" for the purpose
+   * of rendering SSM parameter ARNs.
+   *
+   * If `parameterName` is not specified, this value is ignored.
+   *
+   * @default - auto-detect based on `parameterName`
+   */
+  readonly simpleName?: boolean;
+
+  /**
+   * The version number of the value you wish to retrieve.
+   *
+   * @default The latest version will be retrieved.
+   */
+  readonly version?: number;
+
+  /**
+   * The type of the string parameter.
+   *
+   * @default ParameterType.STRING
+   */
+  readonly type?: ssm.ParameterType;
 }
 
 const RESOURCE_TYPE = "Custom::SSM_String_Parameter_Cross_Region";
