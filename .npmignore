@@ -24,6 +24,10 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
+/.claude/
+/.editorconfig
+/.gitpod.yml
+/lib/integ.default.*
 /.gitattributes
 /.projenrc.ts
 /projenrc

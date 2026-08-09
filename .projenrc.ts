@@ -34,4 +34,9 @@ project.gitpod?.addCustomTask({
 
 project.gitpod?.addVscodeExtensions("dbaeumer.vscode-eslint");
 
+project.addPackageIgnore("/.claude/");
+project.addPackageIgnore("/.editorconfig");
+project.addPackageIgnore("/.gitpod.yml");
+project.addPackageIgnore("/lib/integ.default.*");
+
 project.synth();
