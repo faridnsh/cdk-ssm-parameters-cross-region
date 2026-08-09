@@ -16,9 +16,7 @@ Object {
       ],
       "Properties": Object {
         "Code": Object {
-          "S3Bucket": Object {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
           "S3Key": "11d371859e49f3b1a49896583254890801a40beada56e4c84409a179a221e2e2.zip",
         },
         "Handler": "index.handler",
@@ -75,7 +73,7 @@ Object {
             Object {
               "Action": "ssm:GetParameter",
               "Effect": "Allow",
-              "Resource": "*",
+              "Resource": "arn:aws:ssm:eu-central-1:123456789012:parameter/path/name/integ/test",
             },
           ],
           "Version": "2012-10-17",
@@ -121,7 +119,18 @@ Object {
             Object {
               "Action": "ssm:GetParameter",
               "Effect": "Allow",
-              "Resource": "*",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test",
+                  ],
+                ],
+              },
             },
           ],
           "Version": "2012-10-17",
@@ -151,11 +160,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":ssm:eu-central-1:",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":parameter/path/name/integ/test\\"}}",
+              ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test\\"}}",
             ],
           ],
         },
@@ -174,11 +179,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":ssm:eu-central-1:",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":parameter/path/name/integ/test\\"}}",
+              ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test\\"}}",
             ],
           ],
         },
@@ -200,11 +201,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":ssm:eu-central-1:",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":parameter/path/name/integ/test\\"}}",
+              ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test\\"}}",
             ],
           ],
         },
@@ -216,11 +213,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":ssm:eu-central-1:",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":parameter/path/name/integ/test\\"}}",
+              ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test\\"}}",
             ],
           ],
         },
@@ -239,11 +232,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":ssm:eu-central-1:",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":parameter/path/name/integ/test\\"}}",
+              ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test\\"}}",
             ],
           ],
         },
@@ -258,12 +247,34 @@ Object {
             Object {
               "Action": "ssm:PutParameter",
               "Effect": "Allow",
-              "Resource": "*",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test",
+                  ],
+                ],
+              },
             },
             Object {
               "Action": "ssm:DeleteParameter",
               "Effect": "Allow",
-              "Resource": "*",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":ssm:eu-central-1:123456789012:parameter/path/name/integ/test",
+                  ],
+                ],
+              },
             },
           ],
           "Version": "2012-10-17",

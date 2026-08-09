@@ -149,7 +149,7 @@ export class StringParameter extends ParameterBase implements ssm.IStringParamet
           parameterArn ||
           Stack.of(this).formatArn({
             service: "ssm",
-            resource: `parameter${versionedParameterName}`,
+            resource: `parameter${parameterName}`,
             region: region,
           });
 
@@ -174,7 +174,7 @@ export class StringParameter extends ParameterBase implements ssm.IStringParamet
             physicalResourceId: custom_resources.PhysicalResourceId.of(this.parameterArn),
           },
           policy: custom_resources.AwsCustomResourcePolicy.fromSdkCalls({
-            resources: custom_resources.AwsCustomResourcePolicy.ANY_RESOURCE,
+            resources: [this.parameterArn],
           }),
         });
 
@@ -201,6 +201,10 @@ export class StringParameter extends ParameterBase implements ssm.IStringParamet
 
   /**
    * Imports an external string parameter by ARN.
+   *
+   * Cross-account reads require an Advanced-tier parameter shared with the
+   * reading account through AWS Resource Access Manager (AWS RAM). The full
+   * ARN is passed to GetParameter; this construct does not assume a role.
    */
   public static fromStringParameterArn(scope: Construct, id: string, arn: string): IStringParameter {
     return StringParameter.fromStringParameterAttributes(scope, id, {
@@ -297,7 +301,7 @@ export class StringParameter extends ParameterBase implements ssm.IStringParamet
             }
           : undefined,
       policy: custom_resources.AwsCustomResourcePolicy.fromSdkCalls({
-        resources: custom_resources.AwsCustomResourcePolicy.ANY_RESOURCE,
+        resources: [this.parameterArn],
       }),
     });
 
